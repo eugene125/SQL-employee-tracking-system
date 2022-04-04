@@ -1,0 +1,25 @@
+{
+  "name": "sql-employee-tracking-system",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eugene125/SQL-employee-tracking-system.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eugene125/SQL-employee-tracking-system/issues"
+  },
+  "homepage": "https://github.com/eugene125/SQL-employee-tracking-system#readme",
+  "dependencies": {
+    "inquirer": "^8.2.2",
+    "mysql2": "^2.3.3",
+    "save": "^2.4.0"
+  }
+}
