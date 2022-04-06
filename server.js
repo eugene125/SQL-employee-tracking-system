@@ -1,6 +1,5 @@
-const inquirer = require("inquirer");
 const consoleTable = require("console.table");
-const prompts = require("./lib/userPrompts");
+const prompts = require("./userPrompts");
 const database = require("./lib/dbModifications");
 
 const initialPrompt = async () => {
@@ -21,15 +20,19 @@ const initialPrompt = async () => {
     const { selection } = answer;
 
     if (selection === "View"){
-        userPrompts.viewOptions();
+        prompts.viewOptions();
     }
     if (selection === "Add"){
-        userPrompts.addOptions();
+        prompts.addOptions();
     }
     if (selection === "Update"){
-        userPrompts.updateOptions();
+        prompts.updateOptions();
     }
     if (selection === "No actions needed"){
-        exit;
+        return;
     }
 };
+initialPrompt();
+
+
+// module.exports = ;
