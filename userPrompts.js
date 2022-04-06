@@ -8,26 +8,26 @@ const initialPrompt = async () => {
             name: "selection",
             message: "Which of the following actions would you like to perform?",
             choices:
-            [
-                "View",
-                "Add",
-                "Update",
-                "No actions needed"
-            ]
+                [
+                    "View",
+                    "Add",
+                    "Update",
+                    "No actions needed"
+                ]
         },
     ]);
     const { selection } = answer;
 
-    if (selection === "View"){
+    if (selection === "View") {
         viewOptions();
     };
-    if (selection === "Add"){
+    if (selection === "Add") {
         addOptions();
     };
-    if (selection === "Update"){
+    if (selection === "Update") {
         updateOptions();
     };
-    if (selection === "No actions needed"){
+    if (selection === "No actions needed") {
         await dbInfo.close()
         return;
     };
@@ -39,30 +39,30 @@ const viewOptions = async () => {
             type: "list",
             name: "selection",
             message: "Please select the action you wish to perform",
-            choices: 
-            [
-                "View all departments",
-                "View all roles",
-                "View all employees",
-                "Return to previous menu"
-            ]
+            choices:
+                [
+                    "View all departments",
+                    "View all roles",
+                    "View all employees",
+                    "Return to previous menu"
+                ]
         }
     ]);
     const { selection } = answer;
 
-    if (selection === "View all departments"){
-        console.table( await dbInfo.department.get());
+    if (selection === "View all departments") {
+        console.table(await dbInfo.department.get());
         viewOptions();
     };
-    if (selection === "View all roles"){
-        console.table( await dbInfo.roles.get());
+    if (selection === "View all roles") {
+        console.table(await dbInfo.roles.get());
         viewOptions();
     };
-    if (selection === "View all employees"){
-        console.table( await dbInfo.employee.get());
+    if (selection === "View all employees") {
+        console.table(await dbInfo.employee.get());
         viewOptions();
     };
-    if (selection === "Return to previous menu"){
+    if (selection === "Return to previous menu") {
         initialPrompt();
     };
 };
@@ -73,18 +73,18 @@ const addOptions = async () => {
             type: "list",
             name: "selection",
             message: "Please select the action you wish to perform",
-            choices: 
-            [
-                "Add a department",
-                "Add a role",
-                "Add an employee",
-                "Return to previous menu"
-            ]
+            choices:
+                [
+                    "Add a department",
+                    "Add a role",
+                    "Add an employee",
+                    "Return to previous menu"
+                ]
         }
     ]);
     const { selection } = answer;
 
-    if (selection === "Add a department"){
+    if (selection === "Add a department") {
         const answer = await inquirer.prompt([
             {
                 type: "input",
@@ -97,7 +97,7 @@ const addOptions = async () => {
         dbInfo.department.add(addDept);
         addOptions();
     };
-    if (selection === "Add a role"){
+    if (selection === "Add a role") {
         const answer = await inquirer.prompt([
             {
                 type: "input",
@@ -120,7 +120,7 @@ const addOptions = async () => {
         dbInfo.roles.add(title, salary, department_id);
         addOptions();
     };
-    if (selection === "Add an employee"){
+    if (selection === "Add an employee") {
         const answer = await inquirer.prompt([
             {
                 type: "input",
@@ -143,12 +143,12 @@ const addOptions = async () => {
                 message: "What is the ID of the manager the employee reports to?",
             },
         ]);
-        const {first_name, last_name, role_id, manager_id} = answer;
+        const { first_name, last_name, role_id, manager_id } = answer;
 
         dbInfo.employee.add(first_name, last_name, role_id, manager_id);
         addOptions();
     };
-    if (selection === "Return to previous menu"){
+    if (selection === "Return to previous menu") {
         initialPrompt();
     };
 };
@@ -178,5 +178,4 @@ const userModification = {
     addOptions: addOptions,
     updateOptions: updateOptions
 };
-
 initialPrompt();
